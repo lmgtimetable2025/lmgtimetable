@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        .container {
+            text-align: center;
+            background: #ADD8E6; /* Light Blue */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 350px;
+        }
+        .logo img {
+            width: 100px;
+        }
+        .logo h2 {
+            font-family: "Old English Text MT", serif;
+            font-size: 24px;
+            margin: 10px 0;
+        }
+        .login-box {
+            margin-top: 20px;
+        }
+        input[type="text"], input[type="password"] {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #FFA07A; /* Light Orange */
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #FF7F50;
+        }
+        .remember-me {
+            text-align: left;
+            margin: 10px 0;
+        }
+    </style>
+    <script>
+        function login() {
+            var username = document.getElementById("username").value;
+            var password = document.getElementById("password").value;
+
+            if (username === "admin" && password === "1234") {  // Sample validation
+                window.location.href = "dashboard.html";  // Redirect to dashboard
+            } else {
+                alert("Invalid Username or Password! Try again.");
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">
+            <img src="school_logo.png" alt="School Logo">
+            <h2>La Martiniere for Girls</h2>
+            <p>SCHOOL AUTOMATED TIME TABLE APPLICATION - SATA</p>
+        </div>
+        <div class="login-box">
+            <h3>Sign in to start your session</h3>
+            <div class="role-selection">
+                <input type="radio" id="admin" name="role" value="admin">
+                <label for="admin">Admin</label>
+                <input type="radio" id="teacher" name="role" value="teacher" checked>
+                <label for="teacher">Teacher</label>
+            </div>
+            <input type="text" id="username" placeholder="Email or user name" required>
+            <input type="password" id="password" placeholder="Password" required>
+            <div class="remember-me">
+                <input type="checkbox" id="remember">
+                <label for="remember">Remember Me</label>
+            </div>
+            <button type="button" onclick="login()">Sign In</button>
+        </div>
+    </div>
+</body>
+</html>
