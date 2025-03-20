@@ -91,7 +91,7 @@
         }
 
         /* Dropdown Links */
-        .dropdown-content a, .dropdown-content div {
+        .dropdown-content a {
             display: block;
             padding: 8px;
             text-decoration: none;
@@ -100,7 +100,7 @@
             transition: 0.3s ease;
         }
 
-        .dropdown-content a:hover, .dropdown-content div:hover {
+        .dropdown-content a:hover {
             background-color: #FFA07A;
             color: white;
         }
@@ -116,11 +116,9 @@
             max-width: 600px;
         }
 
-        /* Selection Boxes */
-        .selection-box {
-            padding: 10px;
-            font-size: 14px;
-            text-align: left;
+        /* Selection Box - Initially Hidden */
+        #selection-container {
+            display: none;
         }
 
         select, button {
@@ -203,8 +201,9 @@
         <p>Select an option from the menu above to view timetables.</p>
     </div>
 
-    <div class="container" id="selection-container" style="display: none;">
+    <div class="container" id="selection-container">
         <h3 id="selection-title">Select an Option</h3>
+
         <div id="teacher-selection" style="display: none;">
             <label for="teacher">Choose a Teacher:</label>
             <select id="teacher">
@@ -228,7 +227,10 @@
 
     <script>
         function showTimetable(type) {
+            document.getElementById("selection-container").style.display = "none";
             let displayDiv = document.getElementById("timetable-display");
+            displayDiv.style.display = "block";
+
             if (type === "personal") {
                 displayDiv.innerHTML = "<h3>Personal Time Table</h3><p>Showing your timetable...</p>";
             } else if (type === "class") {
@@ -241,11 +243,9 @@
             document.getElementById("timetable-display").style.display = "none";
 
             if (option === "teacher") {
-                document.getElementById("selection-title").innerText = "Select a Teacher";
                 document.getElementById("teacher-selection").style.display = "block";
                 document.getElementById("class-selection").style.display = "none";
             } else if (option === "class") {
-                document.getElementById("selection-title").innerText = "Select a Class";
                 document.getElementById("class-selection").style.display = "block";
                 document.getElementById("teacher-selection").style.display = "none";
             }
